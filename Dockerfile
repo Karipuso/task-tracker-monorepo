@@ -12,5 +12,3 @@ RUN yarn
 
 EXPOSE 3000 3001 8000
 
-# Command to run the application
-CMD ["yarn", "dev"]

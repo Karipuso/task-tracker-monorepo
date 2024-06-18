@@ -1,12 +1,9 @@
 {
+  "extends": "@repo/typescript-config/base.json",
+
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "es2016",
     "module": "ESNext",
-    "moduleResolution": "node",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src"]
+    "types": ["node", "express", "vite/client"]
+  }
 }
