@@ -7,12 +7,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(
-  process.env.MONGO_URI as string,
-  {
-    useUnifiedTopology: true,
-  } as mongoose.ConnectOptions,
-);
+mongoose.connect(process.env.MONGO_URI as string, {
+  useUnifiedTopology: true,
+} as mongoose.ConnectOptions);
 
 const taskSchema = new mongoose.Schema({
   title: String,

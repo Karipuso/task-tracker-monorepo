@@ -1,11 +1,19 @@
+# docker-compose.yml
 version: '3.8'
-
 services:
   mongodb:
     image: mongo:latest
+    container_name: mongodb
     ports:
-      - "27017:27017"
+      - '27017:27017'
+    networks:
+      - mern_stack_network
     volumes:
-      - mongodb-data:/data/db
+      - mongo-data:/data/db
+
+networks:
+  mern_stack_network:
+    external: true
+
 volumes:
-  mongodb-data:
+  mongo-data:
