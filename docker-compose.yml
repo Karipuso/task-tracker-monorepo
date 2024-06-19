@@ -8,6 +8,8 @@ services:
       - '27017:27017'
     volumes:
       - mongo-data:/data/db
+    networks:
+      - app-network
 
   app:
     build:
@@ -18,12 +20,21 @@ services:
       - '3000:3000'
       - '3001:3001'
       - '8000:8000'
-    environment:
-      - MONGO_URI=mongodb://localhost:27017/task_tracker
     volumes:
       - .:/app
       - /app/node_modules
+      - /app/apps/backend/node_modules
+      - /app/apps/client/node_modules
+      - /app/apps/dashboard/node_modules
     command: [ "yarn", "dev" ]
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   mongo-data:
