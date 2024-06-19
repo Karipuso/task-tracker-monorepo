@@ -8,7 +8,10 @@ import taskRoutes from "./routes/taskRoutes.js";
 const app = express();
 
 mongoose
-  .connect("mongodb://localhost:27017/task_tracker")
+  .connect(
+    (process.env.MONGO_URI as string) ||
+      "mongodb://localhost:27017/task_tracker",
+  )
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Error connecting to MongoDB", err));
 
